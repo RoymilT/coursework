@@ -3,13 +3,13 @@
 # add your solution after each of the 10 comments below
 #
 
-# count the number of unique stations
+#1 count the number of unique stations
 #  330 total minus column title = 229 unique stations.
 
-# count the number of unique bikes
+#2 count the number of unique bikes
 #  5700 total unique bikes.
 
-# count the number of trips per day
+#3 count the number of trips per day
 #   12771 "2014-02-01
 #   13816 "2014-02-02
 #    2600 "2014-02-03
@@ -40,16 +40,18 @@
 #    9587 "2014-02-28
 
 
-# find the day with the most rides
+#4 find the day with the most rides
 #  2014-02-02 with 13816
 
-# find the day with the fewest rides
+#5 find the day with the fewest rides
 # "2014-02-13 with only 876
 
-# find the id of the bike with the most rides
+#6 find the id of the bike with the most rides
 #  bike id = 20837
 
-# count the number of rides by gender and birth year
+#7 count the number of rides by gender and birth year
+# cut -d, -f15,14 201402-citibike-tripdata.csv | sort | uniq -c | sort -n -t '"' -k2
+#----------------------------------------------------------------------
 #  6731   unknown = '0'
 # 176526  male    = '1'
 #  41479  female  = '2'
@@ -196,9 +198,11 @@
    #  164 "1997","1"
    #   87 "1997","2"
 
-# count the number of trips that start on cross streets that both contain numbers 
+#9 count the number of trips that start on cross streets that both contain numbers 
 # (e.g., "1 Ave & E 15 St", "E 39 St & 2 Ave", ...)
 # 159372 trips
 
-# compute the average trip duration
+#10 compute the average trip duration
+#cut -d, -f1 201402-citibike-tripdata.csv | tr '"' ' ' | awk -F, '{sum+=$1}END {if (NR>0) print "AVG: " sum/NR}'
+#--------------------------------------------------------------------------------
 # AVG: 874.516
