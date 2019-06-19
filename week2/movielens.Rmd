@@ -16,6 +16,9 @@ library(knitr)
 
 # set plot theme
 theme_set(theme_bw())
+theme_update(plot.title = element_text(hjust = 0.5, face = 4))
+theme_update(text = element_text(family = "sans", face = "bold"))
+
 ```
 
 # Load and preview data
@@ -36,9 +39,12 @@ head(ratings) %>% kable()
 ```{r dist-ratings}
 # plot the distribution of rating values (slide 21)
 
-ratings %>% 
+dist_ratings <- ratings %>% 
   ggplot(aes( x = rating)) +
-  geom_histogram(bins = 30)
+  geom_histogram(bins = 30, fill = "blue") +
+  labs(x = "Rating", y = "Number of ratings", title = "Distribution of ratings")
+
+plot(dist_ratings)
 
 ```
 
@@ -47,34 +53,45 @@ ratings %>%
 ```{r aggregate-by-movie}
 # aggregate ratings by movie, computing mean and number of ratings
 # hint: use the n() function for easy counting within a group
-ratings %>% 
+
+aggregate_by_movie <- ratings %>% 
   group_by(movie_id) %>%
-  summarize(count = n(), avg_rating = mean(rating)) %>% View()
+  summarize(count = n(), avg_rating = mean(rating))
+
+View(aggregate_by_movie)
   
 ```
 
 ```{r dist-movie-popularity}
 # plot distribution of movie popularity (= number of ratings the movie received)
 # hint: try scale_x_log10() for a logarithmic x axis
-ratings %>% 
+
+dist_movie_pop <- ratings %>% 
   group_by(movie_id) %>%
   summarize(count = n()) %>% 
   ungroup() %>%
   ggplot(aes(x = count)) +
-  geom_histogram(bins = 30) + 
-  scale_x_log10()
+  geom_histogram(bins = 30, fill = "gray", color = "black") + 
+  scale_x_log10(label = comma) +
+  labs(x = "Number of rating", y = "Number of movies", title = "Distribution of Movie Popularity") 
+
+plot(dist_movie_pop)
 ```
 
 ```{r dist-mean-ratings-by-movie}
 # plot distribution of mean ratings by movie (slide 23)
 # hint: try geom_histogram and geom_density
-ratings %>% 
+
+dist_mean_ratings_by_movie <- ratings %>% 
   group_by(movie_id) %>% 
   summarize(count = n(), mean_rating = mean(rating)) %>% 
   ungroup() %>% 
   ggplot(aes( x = mean_rating)) +
-  geom_histogram(bins = 30) +
-  geom_density()
+  geom_histogram(bins = 30, fill = "gray", color = "black") +
+  geom_density() +
+  labs(x = "Average Rating", y = "Number of Movie", title = "Distribution of Mean-ratings by Movie")
+
+dist_mean_ratings_by_movie %>% plot()
 ```
 
 ```{r cdf-movie-pop}
@@ -83,6 +100,7 @@ ratings %>%
 # store the result in a new data frame so you can use it in creating figure 2 from the paper below
 
 # plot the CDF of movie popularity
+
 cdf_movie_pop <- ratings %>%
   group_by(movie_id) %>% 
   summarize(count = n()) %>%
@@ -91,7 +109,7 @@ cdf_movie_pop <- ratings %>%
          frac_ratings = cumsum(count) / sum(count)) %>%
   ungroup()
 
-View(cdf_movie_pop)
+# View(cdf_movie_pop)
 
 cdf_movie_pop %>% 
   ggplot(aes(x = rank, y = frac_ratings)) +
@@ -106,8 +124,9 @@ cdf_movie_pop %>%
 
 ```{r aggregate-by-user}
 # aggregate ratings by user, computing mean and number of ratings
+
 aggregate_by_user <- ratings %>%
-  group_by(user_id, movie_id) %>% 
+  group_by(user_id) %>% 
   summarize(count = n(), mean = mean(rating)) %>% 
   arrange(desc(count)) %>% 
   ungroup()
@@ -118,9 +137,16 @@ aggregate_by_user <- ratings %>%
 ```{r dist-user-activity}
 # plot distribution of user activity (= number of ratings the user made)
 # hint: try a log scale here
-aggregate_by_user %>% 
+
+dist_user_activity <- aggregate_by_user %>% 
+  # filter( count >= 10) %>% 
   ggplot(aes(x = count, y = mean)) +
-  geom_point()
+  geom_point() +
+  scale_x_log10(label = comma) +
+  labs(x = "Number of Ratings per User", y = "Average Rating", title = "User Activity")
+  
+
+dist_user_activity %>% plot()
 ```
 
 # Anatomy of the long tail
@@ -139,11 +165,59 @@ aggregate_by_user %>%
 # another for 90%---do not, however, bother implementing the null
 # model (shown in the dashed lines).
 
-cdf_movie_pop %>%
+user_rate_10_plus <- ratings %>% 
+  group_by(user_id) %>%
+  summarise(count = n()) %>%
+  filter( count >= 10) %>%
+  ungroup()
+
+
+cdf_movie_pop <- ratings %>%
   group_by(movie_id) %>% 
   summarize(count = n()) %>%
   arrange(desc(count)) %>% 
-  mutate(rank = rank(desc(count)), frac_ratings = cumsum(count) / sum(count)) %>%
+  mutate(rank = rank(desc(count))) %>%
   ungroup()
+
+df1 <- ratings %>% inner_join(cdf_movie_pop, by = c("movie_id"))
+
+# df1 %>% View()
+
+df2 <- df1 %>% inner_join(user_rate_10_plus, by = c("user_id"))
+
+inventory_90_p <- df2 %>%
+  group_by(user_id) %>%
+  summarize(inventory = quantile(rank, .9)) %>%
+  ungroup() %>% 
+  group_by(inventory) %>% 
+  summarize(count = n()) %>%
+  arrange(inventory) %>% 
+  mutate(frac_ratings = cumsum(count) / sum(count)) %>% 
+  ungroup()
+
+inventory_100_p <- df2 %>%
+  group_by(user_id) %>%
+  summarize(inventory = quantile(rank, 1)) %>%
+  ungroup() %>% 
+  group_by(inventory) %>% 
+  summarize(count = n()) %>%
+  arrange(inventory) %>% 
+  mutate(frac_ratings = cumsum(count) / sum(count))
+
+ggplot() + 
+  geom_line(data = inventory_90_p, aes(x = inventory, y = frac_ratings)) +
+  geom_line(data = inventory_100_p, aes(x = inventory, y = frac_ratings), color = "red") +
+  labs(x = "Inventoty Size", y = "User Satisfaction", title = "Anatomy of the Long Tail") +
+  scale_x_continuous(label = comma) +
+  scale_y_continuous(label = percent) 
+#+
+  # geom_vline(xintercept = 3000, linetype("dashed"))
+
+  # df2 %>%
+  #   group_by(user_id) %>%
+  #   arrange(rank) %>%
+  #   summarize(inventory_90_p = last(rank) ) %>% 
+  #   arrange(desc(inventory_90_p)) %>% 
+  #   View()
 
 ```
