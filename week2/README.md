@@ -36,7 +36,7 @@ This week covers:
   * Use the [download_movielens.sh](download_movielens.sh) script to download the [MovieLens data](http://grouplens.org/datasets/movielens/)
   * Fill in code in the [movielens.Rmd](movielens.Rmd) file to reproduce the plots from Wednesday's slides
   * Sketch out (on paper) how to generate figure 2 from [The Anatomy of the Long Tail](https://5harad.com/papers/long_tail.pdf)
-  * Wrote code to do this in the last section of [movielens.Rmd](movielens.Rmd)
+  * Write code to do this in the last section of [movielens.Rmd](movielens.Rmd)
 
 <!--
 
@@ -46,41 +46,70 @@ This week covers:
   * Review the slides for [reproducible code](reproducible_code.pptx)
   * Read this [Introduction to Make](https://bost.ocks.org/mike/make/) and [Make for Data Scientists](http://blog.kaggle.com/2012/10/15/make-for-data-scientists/)
 
-
-
 -->
 
 
+# Day 2
 
-
-<!--
-# Day 1
+## Intro to stats
   * See the [Statistical Inference & Hypothesis Testing](intro_to_stats.pptx) slides
-  * Review the [statistical inference Rmarkdown file](statistical_inference.Rmd) (preview the output [here](http://htmlpreview.github.io/?https://github.com/msr-ds3/coursework/blob/master/week2/statistical_inference.html))
-  * Interactive demos from the slides:
-    * [Student t-distribution](http://rpsychologist.com/d3/tdist/)
+  * Review the "Estimating a proportion" section of the [statistical inference Rmarkdown file](statistical_inference.Rmd) (preview the output [here](http://htmlpreview.github.io/?https://github.com/msr-ds3/coursework/blob/master/week2/statistical_inference.html))
+  * Read Chapter 7 of [Introduction to Statistical Thinking (With R, Without Calculus)](http://pluto.huji.ac.il/~msby/StatThink/) (IST) for a recap of sampling distributions. Feel free to execute code in the book along the way.
+  * Do question 7.1
+  * Read Chapter 9 of of IST
+  * Do questions 9.1 and 9.2
+  * For background:
+    *  Chapter 4 has a good review of population distributions, expectations, and variance
+    *  Chapter 5 has a recap of random variables
+    *  Chapter 6 has more information on the normal distribution
+
+## References
+  * Chapters 1 and 2 of the online textbook [Intro to Stat with Randomization and Simulation](https://www.openintro.org/stat/textbook.php)
+  * Statistics for Hackers by VanderPlas ([slides](https://speakerdeck.com/jakevdp/statistics-for-hackers), [video](https://www.youtube.com/watch?v=Iq9DzN6mvYA))
+
+# Day 3
+
+## Intro to stats (cont'd)
+
+  * Interactive demos:
     * From the [Seeing theory](http://students.brown.edu/seeing-theory/) site:
       * [Random variables](http://students.brown.edu/seeing-theory/probability-distributions/index.html#section1)
       * [Basic probability](http://students.brown.edu/seeing-theory/basic-probability/index.html)
       * [Central limit theorem](http://students.brown.edu/seeing-theory/probability-distributions/index.html#section3)
       * [Confidence intervals](http://students.brown.edu/seeing-theory/frequentist-inference/index.html#section2)
     * An [interactive tutorial on sampling variability in polling](http://rocknpoll.graphics)
-  * Read Chapter 7 of [Introduction to Statistical Thinking (With R, Without Calculus)](http://pluto.huji.ac.il/~msby/StatThink/) (IST) for a recap of sampling distributions. Feel free to execute code in the book along the way.
-  * Do question 7.1
-  * Read Chapter 9 of of IST
-  * Do questions 9.1 and 9.2
-  * Go through the [sampling means Rmarkdown file](sampling_means_HW.Rmd) (preview the output [here](http://htmlpreview.github.io/?https://github.com/msr-ds3/coursework/blob/master/week2/sampling_means_HW.html)), and complete the last exercise
-  * Read Chapters 10 and 11 of IST
-  * For background:
-    *  Chapter 4 has a good review of population distributions, expectations, and variance
-    *  Chapter 5 has a recap of random variables
-    *  Chapter 6 has more information on the normal distribution
-  * See section 4 of [Mindless Statistics](http://library.mpib-berlin.mpg.de/ft/gg/GG_Mindless_2004.pdf) and [this article](https://link.springer.com/article/10.1007/s10654-016-0149-3) for some warnings on misinterpretations of p-values
+    * [Student t-distribution](http://rpsychologist.com/d3/tdist/)
 
+  * Read Chapters 9, 10, and 11 of IST
+  * Finish up yesterday's exercises from IST
+
+  
+# Day 4
+
+## Experiments
+
+  * Dan gave a guest lecture on experiments 
+
+## More stats!
+
+  * Read Chapters 4 and 6 of IST
+  * Do the following exercises from IST:
+  	 * Questions 4.1 and 4.2
+  	 * Question 6.1
+  	 * Example 5 in Section 8.3.5
+  	 * Questions 10.1 and 10.2
+  	 * Questions 11.1 and 11.3
+  * Read Chapter 2 of [Intro to Stat with Randomization and Simulation](https://www.openintro.org/stat/textbook.php)
+
+<!--
 
   * Review the third chapter of [An Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/index.html) and work on the associated lab
 
+  * See section 4 of [Mindless Statistics](http://library.mpib-berlin.mpg.de/ft/gg/GG_Mindless_2004.pdf) and [this article](https://link.springer.com/article/10.1007/s10654-016-0149-3) for some warnings on misinterpretations of p-values
 
+-->
+
+<!--
 
 # Day 2
 
