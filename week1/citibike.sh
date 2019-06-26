@@ -198,6 +198,7 @@
    #  164 "1997","1"
    #   87 "1997","2"
 
+<<<<<<< HEAD
 #9 count the number of trips that start on cross streets that both contain numbers 
 # (e.g., "1 Ave & E 15 St", "E 39 St & 2 Ave", ...)
 # 159372 trips
@@ -206,3 +207,7 @@
 #cut -d, -f1 201402-citibike-tripdata.csv | tr '"' ' ' | awk -F, '{sum+=$1}END {if (NR>0) print "AVG: " sum/NR}'
 #--------------------------------------------------------------------------------
 # AVG: 874.516
+=======
+
+# compute the average trip duration
+>>>>>>> eb9a0cd6d9ebddaf82bbb69d76673a2efe0c92e6
