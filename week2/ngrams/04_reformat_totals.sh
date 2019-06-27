@@ -1,4 +1,6 @@
 #!/bin/bash
+# reformat to comma-separated file
+cat googlebooks-eng-all-totalcounts-20120701.txt | sed 's/\t\t*/\n/g' > total_counts.csv
 
 # reformat total counts in googlebooks-eng-all-totalcounts-20120701.txt to a valid csv
 #   use tr, awk, or sed to convert tabs to newlines
