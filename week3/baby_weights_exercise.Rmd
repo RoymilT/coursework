@@ -1,0 +1,71 @@
+---
+title: "ISRS Exercises6.1,6.2,6.4"
+author: "Roymil Terrero"
+date: "6/28/2019"
+output: html_document
+---
+#coord_flip() to flip the coordinates
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+```
+
+```{r}
+b_weight <- read.table('babyweights.txt', header = TRUE)
+
+
+
+```
+
+#6.1 Baby weights, Part I. 
+
+(a) Write the equation of the regression line. 
+> y = 123.05 -8.94*X 
+
+(b) Interpret the slope in this context, and calculate the predicted birth weight of babies born to smoker and non-smoker mothers. 
+
+> The slope indicates the relation between smoker or non smoker. In this context the average weight of the baby decreases when the mother is a smoker.
+
+> birth_weight = 123.05 - 8.94 * smoke
+
+(c) Is there a statistically signiﬁcant relationship between the average birth weight and smoking?
+
+> The p-values are so small that I can reject the hypotesis that there is not relationship.
+
+#6.2 Baby weights, Part II.
+
+(a) Write the equation of the regression line. 
+> y = 120.07 - 1.93*X
+
+(b) Interpret the slope in this context, and calculate the predicted birth weight of ﬁrst borns and others.
+> In this context the slope is not significant, since, the standar error is +-1.19. We are so uncertain about the slope, that it could be zero. Additionally, the p-value tells us that perhaps we can not reject the hypotesis that not relationship.
+
+> birth_weight = 120.07 - 1.93 * parity_i
+
+(c) Is there a statistically signiﬁcant relationship between the average birth weight and parity?
+
+#6.3 Baby weights, Part III. 
+
+(a) Write the equation of the regression line that includes all of the variables.
+
+> y = 0.44 * x1 - 3.33 * x2 - 0.01* x3 + 1.15* x4 + 0.05* x5 - 8.40* x6
+
+(b) Interpret the slopes of gestation and age in this context.
+
+>
+
+(c) The coefficient for parity is different than in the linear model shown in Exercise 6.2. Why might there be a difference? 
+
+(d) Calculate the residual for the ﬁrst observation in the data set.
+
+>R = 120 - 200.99 = 80.99
+
+(e) The variance of the residuals is 249.28, and the variance of the birth weights of all babies in the data set is 332.57. Calculate the R2 and the adjusted R2. 
+*Note that there are 1,236 observations in the data set.*
+
+```{r, echo=FALSE}
+
+```
+
