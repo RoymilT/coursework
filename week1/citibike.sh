@@ -3,6 +3,7 @@
 # add your solution after each of the 10 comments below
 #
 
+<<<<<<< HEAD
 #1 count the number of unique stations
 #  330 total minus column title = 229 unique stations.
 
@@ -211,3 +212,23 @@
 
 # compute the average trip duration
 >>>>>>> eb9a0cd6d9ebddaf82bbb69d76673a2efe0c92e6
+=======
+# count the number of unique stations
+
+# count the number of unique bikes
+
+# count the number of trips per day
+
+# find the day with the most rides
+
+# find the day with the fewest rides
+
+# find the id of the bike with the most rides
+
+# count the number of rides by gender and birth year
+
+# count the number of trips that start on cross streets that both contain numbers (e.g., "1 Ave & E 15 St", "E 39 St & 2 Ave", ...)
+
+
+# compute the average trip duration
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244

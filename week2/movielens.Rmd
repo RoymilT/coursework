@@ -1,5 +1,6 @@
 ---
 title: "Movielens"
+<<<<<<< HEAD
 output:
   pdf_document:
     toc: yes
@@ -9,6 +10,15 @@ output:
     toc: yes
     toc_depth: 3
 date: "`r Sys.time()`"
+=======
+date: '`r Sys.time()`'
+output:
+  html_document:
+    #code_folding: hide
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ---
 
 ```{r setup, include=FALSE}
@@ -18,9 +28,12 @@ library(knitr)
 
 # set plot theme
 theme_set(theme_bw())
+<<<<<<< HEAD
 theme_update(plot.title = element_text(hjust = 0.5, face = 4))
 theme_update(text = element_text(family = "sans", face = "bold"))
 
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 # Load and preview data
@@ -40,6 +53,7 @@ head(ratings) %>% kable()
 
 ```{r dist-ratings}
 # plot the distribution of rating values (slide 21)
+<<<<<<< HEAD
 
 dist_ratings <- ratings %>% 
   ggplot(aes( x = rating)) +
@@ -48,6 +62,8 @@ dist_ratings <- ratings %>%
 
 plot(dist_ratings)
 
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 ## Per-movie stats
@@ -55,6 +71,7 @@ plot(dist_ratings)
 ```{r aggregate-by-movie}
 # aggregate ratings by movie, computing mean and number of ratings
 # hint: use the n() function for easy counting within a group
+<<<<<<< HEAD
 
 aggregate_by_movie <- ratings %>% 
   group_by(movie_id) %>%
@@ -62,11 +79,14 @@ aggregate_by_movie <- ratings %>%
 
 View(aggregate_by_movie)
   
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 ```{r dist-movie-popularity}
 # plot distribution of movie popularity (= number of ratings the movie received)
 # hint: try scale_x_log10() for a logarithmic x axis
+<<<<<<< HEAD
 
 dist_movie_pop <- ratings %>% 
   group_by(movie_id) %>%
@@ -78,11 +98,14 @@ dist_movie_pop <- ratings %>%
   labs(x = "Number of rating", y = "Number of movies", title = "Distribution of Movie Popularity") 
 
 plot(dist_movie_pop)
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 ```{r dist-mean-ratings-by-movie}
 # plot distribution of mean ratings by movie (slide 23)
 # hint: try geom_histogram and geom_density
+<<<<<<< HEAD
 
 dist_mean_ratings_by_movie <- ratings %>% 
   group_by(movie_id) %>% 
@@ -94,6 +117,8 @@ dist_mean_ratings_by_movie <- ratings %>%
   labs(x = "Average Rating", y = "Number of Movie", title = "Distribution of Mean-ratings by Movie")
 
 dist_mean_ratings_by_movie %>% plot()
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 ```{r cdf-movie-pop}
@@ -102,6 +127,7 @@ dist_mean_ratings_by_movie %>% plot()
 # store the result in a new data frame so you can use it in creating figure 2 from the paper below
 
 # plot the CDF of movie popularity
+<<<<<<< HEAD
 
 cdf_movie_pop <- ratings %>%
   group_by(movie_id) %>% 
@@ -119,6 +145,8 @@ cdf_movie_pop %>%
   labs(x = "Rank", y = "CDF", 
        title = "Long Tail Analogy")
 
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 
@@ -126,6 +154,7 @@ cdf_movie_pop %>%
 
 ```{r aggregate-by-user}
 # aggregate ratings by user, computing mean and number of ratings
+<<<<<<< HEAD
 
 aggregate_by_user <- ratings %>%
   group_by(user_id) %>% 
@@ -134,11 +163,14 @@ aggregate_by_user <- ratings %>%
   ungroup()
 
   View(aggregate_by_user)
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 ```{r dist-user-activity}
 # plot distribution of user activity (= number of ratings the user made)
 # hint: try a log scale here
+<<<<<<< HEAD
 
 dist_user_activity <- aggregate_by_user %>% 
   # filter( count >= 10) %>% 
@@ -149,6 +181,8 @@ dist_user_activity <- aggregate_by_user %>%
   
 
 dist_user_activity %>% plot()
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```
 
 # Anatomy of the long tail
@@ -166,6 +200,7 @@ dist_user_activity %>% plot()
 # paper, produce one curve for the 100% user satisfaction level and
 # another for 90%---do not, however, bother implementing the null
 # model (shown in the dashed lines).
+<<<<<<< HEAD
 
 user_rate_10_plus <- ratings %>% 
   group_by(user_id) %>%
@@ -222,4 +257,6 @@ ggplot() +
   #   arrange(desc(inventory_90_p)) %>% 
   #   View()
 
+=======
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ```

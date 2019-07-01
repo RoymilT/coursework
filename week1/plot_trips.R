@@ -12,13 +12,18 @@ theme_set(theme_bw())
 # load RData file output by load_trips.R
 load('trips.RData')
 
+<<<<<<< HEAD
 View(trips)
+=======
+
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ########################################
 # plot trip data
 ########################################
 
 # plot the distribution of trip times across all rides
 
+<<<<<<< HEAD
 trips %>%
   summarize(count = n()) %>%
   ggplot(aes(x = tripduration, 
@@ -121,11 +126,31 @@ weather %>%
     geom_point()
     
     
+=======
+# plot the distribution of trip times by rider type
+
+# plot the total number of trips over each day
+
+# plot the total number of trips (on the y axis) by age (on the x axis) and gender (indicated with color)
+
+# plot the ratio of male to female trips (on the y axis) by age (on the x axis)
+# hint: use the spread() function to reshape things to make it easier to compute this ratio
+
+########################################
+# plot weather data
+########################################
+# plot the minimum temperature (on the y axis) over each day (on the x axis)
+
+# plot the minimum temperature and maximum temperature (on the y axis, with different colors) over each day (on the x axis)
+# hint: try using the gather() function for this to reshape things before plotting
+
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 ########################################
 # plot trip and weather data
 ########################################
 
 # join trips and weather
+<<<<<<< HEAD
 trips_with_weather <- inner_join(trips, weather, by="ymd") 
 ungroup()
 # plot the number of trips as a function of the minimum temperature, where each point represents a day
@@ -161,5 +186,22 @@ trips_with_weather %>%
 
 
 
+=======
+trips_with_weather <- inner_join(trips, weather, by="ymd")
+
+# plot the number of trips as a function of the minimum temperature, where each point represents a day
+# you'll need to summarize the trips and join to the weather data to do this
+
+# repeat this, splitting results by whether there was substantial precipitation or not
+# you'll need to decide what constitutes "substantial precipitation" and create a new T/F column to indicate this
+
+# add a smoothed fit on top of the previous plot, using geom_smooth
+
+# compute the average number of trips and standard deviation in number of trips by hour of the day
+# hint: use the hour() function from the lubridate package
+
+# plot the above
+
+>>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 # repeat this, but now split the results by day of the week (Monday, Tuesday, ...) or weekday vs. weekend days
 # hint: use the wday() function from the lubridate package
