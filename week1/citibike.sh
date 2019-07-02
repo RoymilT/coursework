@@ -4,6 +4,7 @@
 #
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #1 count the number of unique stations
 #  330 total minus column title = 229 unique stations.
 
@@ -213,6 +214,8 @@
 # compute the average trip duration
 >>>>>>> eb9a0cd6d9ebddaf82bbb69d76673a2efe0c92e6
 =======
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 # count the number of unique stations
 #  330 total minus column title = 229 unique stations.
 
@@ -410,10 +413,15 @@
 # (e.g., "1 Ave & E 15 St", "E 39 St & 2 Ave", ...)
 # 159372 trips
 
+<<<<<<< HEAD
 
 # compute the average trip duration
 <<<<<<< HEAD
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
 =======
+# AVG: 874.516
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+# compute the average trip duration
 # AVG: 874.516
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
