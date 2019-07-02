@@ -13,14 +13,79 @@ library(lubridate)
 library(broom)
 ```
 1. You can use any features you like that are available prior to the day in question, ranging from the weather, to the time of year and day of week, to activity in previous days or weeks, but don't cheat and use features from the future (e.g., the next day's trips). 
+
 You can even try adding holiday effects. You might want to look at feature distributions to get a sense of what tranformations (e.g., log or manually created factors such as weekday vs. weekend) might improve model performance. 
 This formula syntax in R reference might be useful.
+```{r}
+set.seed(42)
+trips <- read_tsv("trips_per_day.tsv")
+
+trips <- trips %>% mutate(day_of_week = wday(ymd, label = FALSE,
+                                        week_start = getOption("lubridate.week.start", 1)))
+```
 
 2. As usual, split your data into training and validation subsets and evaluate performance on each.
+```{r}
+training_set <- sample_n(trips, nrow(trips)*0.8, replace = FALSE)
+validation_set <- anti_join(trips, training_set)
+
+#model <- lm(formula = num_trips ~ + snow + prcp * day_of_week, data = training_set)
+model <- lm(formula = num_trips ~ tmin, data = training_data)
+
+#data <- sample_frac(trips, replace = FALSE) %>% 
+  #mutate(fold = row_number() %% 5 + 1)
+
+
+
+```
 
 3. Quantify your performance using root mean-squared error.
+```{r}
+#performance <- rmse()
+```
+
 
 5.Report the model with the best performance on the validation data. Watch out for overfitting.
+```{r}
+k <- 8
+train_r_sq <- c(1:k)
+val_r_sq <- c(1:k)
+
+train_rmse <- c(1:k)
+val_rmse <- c(1:k)
+
+for (i in 1:k) 
+{
+  model <- lm(formula = num_trips ~ + poly(tmin, i, raw = T), data = training_set)
+  
+  validation_set <- validation_set %>% 
+    add_predictions(model, var = "pred_val")
+  
+  val_r_sq[i] <- cor(validation_set$pred_val, validation_set$num_trips)^2
+
+  training_set <- training_set %>%
+    add_predictions(model, var = "pred_train")
+
+  train_r_sq[i] <- cor(training_set$pred_train, training_data$num_trips)^2
+
+  val_rmse[i] = sqrt(mean((validation_set$pred_val - validation_set$num_trips)^2))
+  train_rmse[i] = sqrt(mean((training_set$pred_train - training_set$num_trips)^2))
+  
+}
+data_val <- data_frame(val_r_sq)
+data_train <- data_frame(train_r_sq)
+
+data_val <- data_val %>% 
+  mutate(n = 1:k)
+data_train <- data_train %>% 
+  mutate(n = 1:k)
+
+ggplot() +
+  geom_line(data = data_val, aes( x = n, y =  val_r_sq), color = "blue") +
+  geom_line(data = data_train, aes( x = n, y =  train_r_sq), color = "red")
+  
+```
+
 
 6. Plot your final best fit model in two different ways. First with the date on the x-axis and the number of trips on the y-axis, showing the actual values as points and predicted values as a line. Second as a plot where the x-axis is the predicted value and the y-axis is the actual value, with each point representing one day.
 
