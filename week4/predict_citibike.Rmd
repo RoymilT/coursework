@@ -30,12 +30,30 @@ training_set <- sample_n(trips, nrow(trips)*0.8, replace = FALSE)
 validation_set <- anti_join(trips, training_set)
 
 #model <- lm(formula = num_trips ~ + snow + prcp * day_of_week, data = training_set)
-model <- lm(formula = num_trips ~ tmin, data = training_data)
+#model <- lm(formula = num_trips ~ tmin, data = training_set)
+
+model <- lm(formula = num_trips ~ +poly(tmin*prcp, 4, raw = T), data = training_set)
 
 #data <- sample_frac(trips, replace = FALSE) %>% 
   #mutate(fold = row_number() %% 5 + 1)
 
+validation_set <- validation_set %>% 
+  add_predictions(model, var = "predicted_validation")
+training_set <- training_set %>%
+  add_predictions(model, var = "predicted_training")
 
+val_r_sq <- cor(validation_set$predicted_validation, validation_set$num_trips)^2
+train_r_sq <- cor(training_set$predicted_training, training_set$num_trips)^2
+
+val_rmse = sqrt(mean((validation_set$predicted_training - validation_set$num_trips)^2))
+train_rmse = sqrt(mean((training_set$predicted_training - training_set$num_trips)^2))
+
+validation_set %>% ggplot(aes(x = tmin)) +
+  geom_point(aes(y = num_trips), color = "blue") +
+  geom_line(aes(y = predicted_validation), 
+            color ="black") +
+  geom_point(data = training_set, 
+             mapping = aes(y = num_trips), color = "green") 
 
 ```
 
@@ -53,32 +71,37 @@ val_r_sq <- c(1:k)
 
 train_rmse <- c(1:k)
 val_rmse <- c(1:k)
+t_rmse <- c(1:k)
+v_rmse <- c(1:k)
 
 for (i in 1:k) 
 {
-  model <- lm(formula = num_trips ~ + poly(tmin, i, raw = T), data = training_set)
+  model <- lm(formula = form, data = training_set)
   
   validation_set <- validation_set %>% 
     add_predictions(model, var = "pred_val")
   
-  val_r_sq[i] <- cor(validation_set$pred_val, validation_set$num_trips)^2
-
   training_set <- training_set %>%
     add_predictions(model, var = "pred_train")
+  
+  val_r_sq[i] <- cor(validation_set$pred_val, validation_set$num_trips)^2
 
   train_r_sq[i] <- cor(training_set$pred_train, training_data$num_trips)^2
 
   val_rmse[i] = sqrt(mean((validation_set$pred_val - validation_set$num_trips)^2))
   train_rmse[i] = sqrt(mean((training_set$pred_train - training_set$num_trips)^2))
   
+  v_rmse[i] <-  rmse(model, validation_set)
+  t_rmse[i] <-  rmse(model, training_set)
+  
 }
 data_val <- data_frame(val_r_sq)
 data_train <- data_frame(train_r_sq)
 
-data_val <- data_val %>% 
-  mutate(n = 1:k)
-data_train <- data_train %>% 
-  mutate(n = 1:k)
+# data_val <- data_val %>% 
+#   mutate(n = 1:k)
+# data_train <- data_train %>% 
+#   mutate(n = 1:k)
 
 ggplot() +
   geom_line(data = data_val, aes( x = n, y =  val_r_sq), color = "blue") +
