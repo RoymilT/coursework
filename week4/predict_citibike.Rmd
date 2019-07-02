@@ -1,0 +1,40 @@
+---
+title: "predict_citibike"
+author: "Roymil Terrero"
+date: "7/2/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+library(broom)
+```
+1. You can use any features you like that are available prior to the day in question, ranging from the weather, to the time of year and day of week, to activity in previous days or weeks, but don't cheat and use features from the future (e.g., the next day's trips). 
+You can even try adding holiday effects. You might want to look at feature distributions to get a sense of what tranformations (e.g., log or manually created factors such as weekday vs. weekend) might improve model performance. 
+This formula syntax in R reference might be useful.
+
+2. As usual, split your data into training and validation subsets and evaluate performance on each.
+
+3. Quantify your performance using root mean-squared error.
+
+5.Report the model with the best performance on the validation data. Watch out for overfitting.
+
+6. Plot your final best fit model in two different ways. First with the date on the x-axis and the number of trips on the y-axis, showing the actual values as points and predicted values as a line. Second as a plot where the x-axis is the predicted value and the y-axis is the actual value, with each point representing one day.
+
+7. Inspect the model when you're done to figure out what the highly predictive features are, and see if you can prune away any negligble features that don't matter much.
+
+8. When you're convinced that you have your best model, clean up all your code so that it saves your best model in a .RData file using the save function.
+
+9.Commit all of your changes to git, using git add -f to add the model .Rdata file if needed, and push to your Github repository.
+Write a new file that loads in the weather data for new days and your saved model, and predicts the number of trips for each day (see load_trips.R for code snippets to load in the weather data).
+
+
+10. Modify the download_trips.sh script to download trips from 2015 (instead of 2014).
+
+
+11. Compute the RMSE between the actual and predicted trips for 2015 and compare the results to what you found with cross-validation.
+
+12. Pair up with a partner who has a different model, run their model, and evaluate the predictions it makes for the 2015 data.
