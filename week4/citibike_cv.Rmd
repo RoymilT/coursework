@@ -7,13 +7,202 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(dplyr)
+library(tidyverse)
+library(modelr)
+library(ggplot2)
+library(lattice)
+library(rpart)
+library(datasets)
+#library(glmnet)
+library(Matrix)
+#library(kableExtra)
 ```
 
 ```{r}
+#------------------------------------------------------------------------------------
+#partitioning data: We want to allocate 80% of the data to training and 20% to test
+# partition <- createDataPartition(y = data$date, p = 0.7, list = F)
+# training_data = data[partition,]
+# test <- data[-partition,]
+# 
+# partition_training <- createDataPartition(y = training_data$date, p = 0.8, list = F)
+# training <-  training_data[partition_training, ]
+# validation <- training_data[-partition_training, ]
+#------------------------------------------------------------------------------------
+
+#split the data 80% training and 20% validation
+
+
+set.seed(42)
 trips_per_day <- read_tsv('trips_per_day.tsv')
+
+training_data <- sample_n(trips_per_day, nrow(trips_per_day)*0.8, replace = FALSE)
+
+validation_data <- anti_join(trips_per_day, training_data)
+
+model <- lm(formula = num_trips ~ tmin, data = training_data)
+
+#fit model using lm
+
+#validation_data$predicted_validation <- predict(model, validation_data)
+validation_data <- validation_data %>% 
+  add_predictions(model, var = "predicted_validation")
+
+validation_r_sq <- cor(validation_data$predicted_validation, validation_data$num_trips)^2
+
+#training_data$predicted_training <- predict(model, training_data)
+training_data <- training_data %>% add_predictions(model, var = "predicted_training")
+training_r_sq <- cor(training_data$predicted_training, training_data$num_trips)^2
+
+validation_rmse = sqrt(mean((validation_data$predicted_training - validation_data$num_trips)^2))
+
+training_rmse = sqrt(mean((training_data$predicted_training - training_data$num_trips)^2))
+
+
+validation_data %>% ggplot(aes(x = tmin)) +
+  geom_point(aes(y = num_trips), color = "blue") +
+  geom_line(aes(y = predicted_validation), 
+            color ="black") +
+  geom_point(data = training_data, 
+             aes(y = num_trips), color = "green") 
+
 ```
 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+
+```{r}
+model_2 <- lm(formula = num_trips ~ + poly(tmin, 2, raw = T), data = training_data)
+
+
+validation_data$predicted_validation_2 <- predict(model_2, validation_data)
+View(validation_data)
+
+validation_data <- validation_data %>% 
+  add_predictions(model, var = "pred1")
+
+model2_validation_r_sq <- cor(validation_data$predicted_validation_2, validation_data$num_trips)^2
+
+training_data$predicted_training_2 <- predict(model_2, training_data)
+
+model2_training_r_sq <- cor(training_data$predicted_training_2, training_data$num_trips)^2
+
+model2_validation_rmse = sqrt(mean((validation_data$predicted_validation_2 - validation_data$num_trips)^2))
+model2_training_rmse = sqrt(mean((training_data$predicted_training_2 - training_data$num_trips)^2))
+
+ggplot() +
+  geom_point(data = validation_data, aes( x = tmin, y = num_trips), color = "blue") +
+  geom_point(data = training_data, aes(x = tmin, y = num_trips), color = "green") +
+  geom_line(data = validation_data, aes(x = tmin, y = predicted_validation_2), color ="red")
+
 ```
+5. Now automate this, extending the model to higher-order polynomials with a for 
+loop over the degree k. For each value of k, fit a model to the training data and 
+save the R^2 on the training data to one vector and validation vector to another. 
+
+Then plot the training and validation R^2 as a function of k. What value of k has 
+the best performance?
+
+
+
+```{r }
+k <- 8
+train_r_sq <- c(1:k)
+val_r_sq <- c(1:k)
+
+train_rmse <- c(1:k)
+val_rmse <- c(1:k)
+
+for (i in 1:k) 
+{
+  model <- lm(formula = num_trips ~ + poly(tmin, i, raw = T), data = training_data)
+  
+  validation_data$p_V <- predict(model, validation_data)
+  
+  val_r_sq[i] <- cor(validation_data$p_V, validation_data$num_trips)^2
+
+  training_data$p_t <- predict(model, training_data)
+
+  train_r_sq[i] <- cor(training_data$p_t, training_data$num_trips)^2
+
+  val_rmse[i] = sqrt(mean((validation_data$p_v - validation_data$num_trips)^2))
+  train_rmse[i] = sqrt(mean((training_data$p_t - training_data$num_trips)^2))
+  
+}
+data_val <- data_frame(val_r_sq)
+data_train <- data_frame(train_r_sq)
+
+data_val <- data_val %>% 
+  mutate(n = 1:k)
+data_train <- data_train %>% 
+  mutate(n = 1:k)
+
+ggplot() +
+  geom_line(data = data_val, aes( x = n, y =  val_r_sq), color = "blue") +
+  geom_line(data = data_train, aes( x = n, y =  train_r_sq), color = "red")
+  
+  
+  
+```
+
+6.Finally, fit one model for the value of k with the best performance in 6), 
+and plot the actual and predicted values for this model.
+
+```{r}
+best_fit <- match(max(val_r_sq),val_r_sq)
+
+best_model <- lm(num_trips ~ poly(tmin, best_fit, raw = T), training_data)
+
+validation_data %>% 
+  add_predictions(best_model) %>% 
+  ggplot(aes(x = tmin))+
+  geom_point(aes( y = num_trips), color = "red") +
+  geom_line(aes(y = pred), color = "blue")
+  
+  
+  
+```
+
+Now implement 5-fold cross-validation to get a better estimate of the error on the validation data. 
+Do this within a for-loop over folds, and keep track of the mean-squared error on the validation data in each iteration. 
+Then compute the average of the five mean-squared errors that you get for the validation data in each fold, as well as the standard error (!= standard deviation!) on that average. 
+Hint: you can shuffle the rows of the data set as above in part 2), but now label each row as belonging to 1 of 5 folds and then exclude one fold on each loop.
+
+
+```{r}
+shuffled_data <- sample_frac(trips_per_day, replace = FALSE) %>% 
+  mutate(fold = row_number() %% 5 + 1)
+#View(shuffled_data)
+k_fold =  c(1:5)
+poly = c(1:9)
+
+mean_val <- c()
+mean_train <- c()
+  
+train_se <- c()
+val_se <- c()
+  
+for (i in poly) 
+{
+  for (k in k_fold)
+  {
+    k_train <- shuffled_data %>% filter(fold != k)
+    k_val <- shuffled_data %>% filter(fold == k)
+    model <- lm(formula = num_trips ~ + poly(tmin, k, raw = T), data = training_data)
+    
+    t_mse <- rmse(model,k_train)
+    v_mse <- rmse(model,k_val)
+  
+  }
+  mean_val[i] <- mean(v_mse)
+  mean_train[i] <- mean(t_mse)
+  
+  train_se[i] <- sd(t_mse/sqrt(273))
+  val_se[i] <- sd(v_mse/sqrt(92))
+  
+}
+
+```
+
