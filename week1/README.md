@@ -111,7 +111,10 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Review [intro_to_r.ipynb](intro_to_r.ipynb) for an introduction to R
   * Have a look at [Codecademy's introduction to R](https://www.codecademy.com/learn/learn-r)
 <<<<<<< HEAD
+<<<<<<< HEAD
   * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 
@@ -119,6 +122,10 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Use the [musical pairs script](students/musical_pairs.sh) we wrote together yesterday to determine your programming partner each day
   * Fill in solutions to the counting exercises under each comment in [citibike.R](citibike.R)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
   * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
@@ -133,7 +140,10 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
 	* Sean Anderson's [dplyr and pipes examples](http://seananderson.ca/2014/09/13/dplyr-intro.html) ([code](https://github.com/seananderson/dplyr-intro-2014) on github)
 	* Rstudio's [data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	* The [tidyverse style guide]
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 
@@ -142,6 +152,7 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   	* [DataCamp's Data Manipulation in R](https://campus.datacamp.com/courses/dplyr-data-manipulation-r-tutorial) tutorial
   	* [Datacamp's Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) tutorial
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 # Day 4
@@ -162,6 +173,8 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
     * DataCamp's [Data Visualization with ggplot2 (part 1)](https://campus.datacamp.com/courses/data-visualization-with-ggplot2-1/) tutorial
   * References:
 =======
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 <!--
 
 
@@ -177,6 +190,9 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Write code in [plot_trips.R](plot_trips.R) to reproduce and extend the visualizations we made this morning using `trips.RData`
 
   * Additional references
+<<<<<<< HEAD
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
     * RStudio's [ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
     * Sean Anderson's [ggplot2 slides](http://seananderson.ca/courses/12-ggplot2/ggplot2_slides_with_examples.pdf) ([code]((http://github.com/seananderson/datawranglR))) for more examples 
@@ -184,7 +200,10 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
     * The [official ggplot2 docs](http://docs.ggplot2.org/current/)
     * Videos on [Visualizing Data with ggplot2](http://varianceexplained.org/RData/lessons/lesson2/)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 
 
 # Day 4
@@ -219,5 +238,9 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Sketch out (on paper) how to generate figure 2 from [The Anatomy of the Long Tail](https://5harad.com/papers/long_tail.pdf)
   * Wrote code to do this in the last section of [movielens.Rmd](movielens.Rmd)
 
+<<<<<<< HEAD
+-->
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
 -->
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747

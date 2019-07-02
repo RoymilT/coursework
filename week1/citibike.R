@@ -5,10 +5,14 @@ library(lubridate)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # READ AND TRANSFORM THE DATA          #
 =======
 # READ AND TRANSFORM THE DATA
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+# READ AND TRANSFORM THE DATA          #
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 # READ AND TRANSFORM THE DATA          #
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
@@ -36,6 +40,9 @@ trips <- mutate(trips, gender = factor(gender, levels=c(0,1,2), labels = c("Unkn
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 View(trips)
@@ -138,6 +145,7 @@ View(trips)
     arrange(day, hour, desc(mean)) %>%
     ungroup() %>%
     View()
+<<<<<<< HEAD
 <<<<<<< HEAD
   
 =======
@@ -246,6 +254,9 @@ View(trips)
     arrange(day, hour, desc(mean)) %>%
     ungroup() %>%
     View()
+  
+>>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
   
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
