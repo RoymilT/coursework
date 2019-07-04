@@ -11,6 +11,9 @@ library(tidyverse)
 library(dplyr)
 library(lubridate)
 library(broom)
+theme_set(theme_bw())
+
+set.seed(42)
 ```
 1. You can use any features you like that are available prior to the day in question, ranging from the weather, to the time of year and day of week, to activity in previous days or weeks, but don't cheat and use features from the future (e.g., the next day's trips). 
 
@@ -22,6 +25,8 @@ trips <- read_tsv("trips_per_day.tsv")
 
 trips <- trips %>% mutate(day_of_week = wday(ymd, label = FALSE,
                                         week_start = getOption("lubridate.week.start", 1)))
+#read file
+#holyday <- holyday %>% mutate(is_holyday = !(is.na(holyday)))
 ```
 
 2. As usual, split your data into training and validation subsets and evaluate performance on each.
@@ -30,12 +35,10 @@ training_set <- sample_n(trips, nrow(trips)*0.8, replace = FALSE)
 validation_set <- anti_join(trips, training_set)
 
 #model <- lm(formula = num_trips ~ + snow + prcp * day_of_week, data = training_set)
-#model <- lm(formula = num_trips ~ tmin, data = training_set)
 
-model <- lm(formula = num_trips ~ +poly(tmin*prcp, 4, raw = T), data = training_set)
+model <- lm(formula = num_trips ~ +poly(tmin+prcp, 8, raw = T), data = training_set)
 
-#data <- sample_frac(trips, replace = FALSE) %>% 
-  #mutate(fold = row_number() %% 5 + 1)
+
 
 validation_set <- validation_set %>% 
   add_predictions(model, var = "predicted_validation")
@@ -65,32 +68,34 @@ validation_set %>% ggplot(aes(x = tmin)) +
 
 5.Report the model with the best performance on the validation data. Watch out for overfitting.
 ```{r}
-k <- 8
+trips <- sample_frac(trips, 1, replace = F) %>% 
+  mutate(fold = (row_number() %% 5) + 1)
+
+k <- 5
 train_r_sq <- c(1:k)
 val_r_sq <- c(1:k)
 
 train_rmse <- c(1:k)
 val_rmse <- c(1:k)
-t_rmse <- c(1:k)
-v_rmse <- c(1:k)
+
 
 for (i in 1:k) 
 {
-  model <- lm(formula = form, data = training_set)
+  training <- trips %>%  filter(fold != i)
   
-  validation_set <- validation_set %>% 
-    add_predictions(model, var = "pred_val")
+  model <- lm(formula = num_trips ~ prcp * tmin + prcp + tmax + snwd * ymin +snwd * tmax 
+              + is_holyday, data = training_set)
   
-  training_set <- training_set %>%
-    add_predictions(model, var = "pred_train")
+  validation <-  trips %>% filter(fold == i)
+ 
+ 
+  val_rmse[i] = sqrt(mean((validatiopred_val - validation_set$num_trips)^2))
+  train_rmse[i] = sqrt(mean((training_set$pred_train - training_set$num_trips)^2))
   
-  val_r_sq[i] <- cor(validation_set$pred_val, validation_set$num_trips)^2
+   val_r_sq[i] <- cor(validation_set$pred_val, validation_set$num_trips)^2
 
   train_r_sq[i] <- cor(training_set$pred_train, training_data$num_trips)^2
 
-  val_rmse[i] = sqrt(mean((validation_set$pred_val - validation_set$num_trips)^2))
-  train_rmse[i] = sqrt(mean((training_set$pred_train - training_set$num_trips)^2))
-  
   v_rmse[i] <-  rmse(model, validation_set)
   t_rmse[i] <-  rmse(model, training_set)
   
