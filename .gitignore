@@ -9,6 +9,8 @@
 *.csv
 *.tsv
 *week1/trips.RData
+*week4/testing.Rmd
+*testing.Rmd
 
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
