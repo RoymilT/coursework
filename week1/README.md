@@ -112,23 +112,30 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Have a look at [Codecademy's introduction to R](https://www.codecademy.com/learn/learn-r)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+  * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ## R counting exercises
   * Use the [musical pairs script](students/musical_pairs.sh) we wrote together yesterday to determine your programming partner each day
   * Fill in solutions to the counting exercises under each comment in [citibike.R](citibike.R)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
   * Read chapters 2 and 3 of [R for Data Science](http://r4ds.had.co.nz)
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ## Learn more
   * References:
@@ -141,11 +148,15 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
 	* Rstudio's [data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	* The [tidyverse style guide]
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+	* The [tidyverse style guide]
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
   * Tutorials:
   	* [DataCamp's introduction to R](http://datacamp.com/courses/free-introduction-to-r) tutorials (or Hadley's [Advanced R](http://adv-r.had.co.nz) if you're a pro)
@@ -154,6 +165,9 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 # Day 4
 
@@ -172,6 +186,7 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
   * Tutorials:
     * DataCamp's [Data Visualization with ggplot2 (part 1)](https://campus.datacamp.com/courses/data-visualization-with-ggplot2-1/) tutorial
   * References:
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
@@ -194,11 +209,14 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
 =======
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
     * RStudio's [ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
     * Sean Anderson's [ggplot2 slides](http://seananderson.ca/courses/12-ggplot2/ggplot2_slides_with_examples.pdf) ([code]((http://github.com/seananderson/datawranglR))) for more examples 
     * The [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/)
     * The [official ggplot2 docs](http://docs.ggplot2.org/current/)
     * Videos on [Visualizing Data with ggplot2](http://varianceexplained.org/RData/lessons/lesson2/)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -244,3 +262,5 @@ Install tools: [Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/
 =======
 -->
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5

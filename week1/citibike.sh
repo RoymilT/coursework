@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #1 count the number of unique stations
 #  330 total minus column title = 229 unique stations.
 
@@ -433,3 +434,23 @@
 # compute the average trip duration
 # AVG: 874.516
 >>>>>>> 5b88f7499692eda9dd96591e34a4317570d03747
+=======
+# count the number of unique stations
+
+# count the number of unique bikes
+
+# count the number of trips per day
+
+# find the day with the most rides
+
+# find the day with the fewest rides
+
+# find the id of the bike with the most rides
+
+# count the number of rides by gender and birth year
+
+# count the number of trips that start on cross streets that both contain numbers (e.g., "1 Ave & E 15 St", "E 39 St & 2 Ave", ...)
+
+
+# compute the average trip duration
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5

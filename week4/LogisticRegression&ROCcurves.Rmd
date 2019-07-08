@@ -1,0 +1,21 @@
+---
+title: "Logistic & ROC Curve"
+author: "Roymil Terrero"
+date: "7/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(stargazer)
+library(caret)
+loan <- read.csv("https://www.dropbox.com/s/89g1yyhwpcqwjn9/lending_club_cleaned.csv?raw=1")
+#loan <- read.csv("C:/Users/dvorakt/Google Drive/business analytics/labs/lab9/lending_club_cleaned.csv")
+summary(loan)
+```
+

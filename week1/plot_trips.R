@@ -13,16 +13,21 @@ theme_set(theme_bw())
 load('trips.RData')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 View(trips)
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ########################################
 # plot trip data
 ########################################
 
 # plot the distribution of trip times across all rides
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 trips %>%
   summarize(count = n()) %>%
@@ -127,6 +132,8 @@ weather %>%
     
     
 =======
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 # plot the distribution of trip times by rider type
 
 # plot the total number of trips over each day
@@ -144,12 +151,16 @@ weather %>%
 # plot the minimum temperature and maximum temperature (on the y axis, with different colors) over each day (on the x axis)
 # hint: try using the gather() function for this to reshape things before plotting
 
+<<<<<<< HEAD
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ########################################
 # plot trip and weather data
 ########################################
 
 # join trips and weather
+<<<<<<< HEAD
 <<<<<<< HEAD
 trips_with_weather <- inner_join(trips, weather, by="ymd") 
 ungroup()
@@ -187,6 +198,8 @@ trips_with_weather %>%
 
 
 =======
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 trips_with_weather <- inner_join(trips, weather, by="ymd")
 
 # plot the number of trips as a function of the minimum temperature, where each point represents a day
@@ -202,6 +215,9 @@ trips_with_weather <- inner_join(trips, weather, by="ymd")
 
 # plot the above
 
+<<<<<<< HEAD
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 # repeat this, but now split the results by day of the week (Monday, Tuesday, ...) or weekday vs. weekend days
 # hint: use the wday() function from the lubridate package

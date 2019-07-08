@@ -1,10 +1,14 @@
 ---
 title: "MSD Homework 2, Problem 3"
 <<<<<<< HEAD
+<<<<<<< HEAD
 author: "Roymil"
 =======
 author: "Your Name (your uni)"
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+author: "Your Name (your uni)"
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 date: '`r Sys.time()`'
 output:
   pdf_document:
@@ -54,6 +58,7 @@ Load in the `year_counts.tsv` and `total_counts.csv` files. Use the `here()` fun
 
 ```{r load-counts}
 <<<<<<< HEAD
+<<<<<<< HEAD
 year_counts <- read_tsv('year_counts.tsv',
                     col_names = c('term', 'year', 'volume', 'book_count'))
 
@@ -62,12 +67,16 @@ total_counts <- read_csv('total_counts.csv',
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ```
 
 ## Your written answer
 
 Add a line below using Rmarkdown's inline syntax to print the total number of lines in each dataframe you've created.
+<<<<<<< HEAD
 <<<<<<< HEAD
 ```{r}
 total_counts %>% summarize(total_count = n()) 
@@ -77,6 +86,8 @@ year_counts %>% summarize(year_count = n())
 ```
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 # Part B
 
@@ -88,6 +99,7 @@ Join the raw year term counts with the total counts and divide to get a proporti
 
 ```{r join-years-and-totals}
 <<<<<<< HEAD
+<<<<<<< HEAD
 year_and_totals <- year_counts %>% 
   left_join(total_counts, by = c("year"))
 
@@ -96,6 +108,9 @@ year_and_totals <- year_and_totals %>%
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ```
 
@@ -105,6 +120,7 @@ Plot the proportion of mentions for the terms "1883", "1910", and "1950" over ti
 
 ```{r plot-proportion-over-time}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 year_and_totals %>% 
   filter(year >= 1850, term == '1883' | term == '1910' | term =='1950') %>% 
@@ -117,16 +133,22 @@ year_and_totals %>%
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ## Your written answer
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ANSWER: Yes, the version 2 of the NGram data produces a similar results to those presented in the paper by Michel et al. (2011). However, there results are based on an earlier version of the data.
 
 =======
 Write up your answer to Part B here.
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+Write up your answer to Part B here.
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 # Part C
 
@@ -140,6 +162,7 @@ Go to the ngram viewer, enter the terms "1883", "1910", and "1950" and take a sc
 
 Add your screenshot for Part C below this line using the `![](figure_filename.png)` syntax and comment on similarities / differences.
 <<<<<<< HEAD
+<<<<<<< HEAD
 ![](NGram_Viewer.png)
 
 Similarities:
@@ -152,6 +175,9 @@ Differences:
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 # Part D
 
@@ -162,6 +188,7 @@ Differences:
 Plot the raw counts for the terms "1883", "1910", and "1950" over time from 1850 to 2012. Use the `comma` function from the `scales` package for a readable y axis. The colors for each term should match your last plot, and it's nice if these match the original paper but not strictly necessary.
 
 ```{r plot-raw-mentions-over-time}
+<<<<<<< HEAD
 <<<<<<< HEAD
 year_and_totals %>% 
   filter(year >= 1850, term == '1883' | term == '1910' | term == '1950') %>%
@@ -174,6 +201,9 @@ year_and_totals %>%
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 # Part E
@@ -188,6 +218,7 @@ Plot the total counts for each year over time, from 1850 to 2012. Use the `comma
 
 ```{r plot-totals}
 <<<<<<< HEAD
+<<<<<<< HEAD
 year_and_totals %>% 
   filter(year >= 1850, term == '1883' | term == '1910' | term == '1950') %>%
   group_by(year) %>% 
@@ -197,6 +228,8 @@ year_and_totals %>%
   labs(x = "Year", y = "Total Count" )
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ```
 
@@ -204,6 +237,7 @@ year_and_totals %>%
 
 Write up your answer to Part E here.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 I belive that the diferrece is directly related to the diference in datasets. The results of Michel et al. were based on the previous version of the Ngram. Since, Ngram keeps being updated the raw caount is countiniously growing over time.
 
@@ -217,6 +251,11 @@ Note that Michel et al. (2011) do something more complicated to estimate the hal
 
 > Now, using the proportion of mentions, replicate the inset of figure 3a. That is, for each year between 1875 and 1975, calculate the half-life of that year. The half-life is defined to be the number of years that pass before the proportion of mentions reaches half its peak value. Note that Michel et al. (2011) do something more complicated to estimate the half-life—see section III.6 of the Supporting Online Information—but they claim that both approaches produce similar results. Does version 2 of the NGram data produce similar results to those presented in Michel et al. (2011), which are based on version 1 data? (Hint: Don’t be surprised if it doesn’t.)
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+# Part F
+
+> Now, using the proportion of mentions, replicate the inset of figure 3a. That is, for each year between 1875 and 1975, calculate the half-life of that year. The half-life is defined to be the number of years that pass before the proportion of mentions reaches half its peak value. Note that Michel et al. (2011) do something more complicated to estimate the half-life—see section III.6 of the Supporting Online Information—but they claim that both approaches produce similar results. Does version 2 of the NGram data produce similar results to those presented in Michel et al. (2011), which are based on version 1 data? (Hint: Don’t be surprised if it doesn’t.)
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ## Compute peak mentions
 
@@ -224,6 +263,7 @@ For each year term, find the year where its proportion of mentions peaks (hits i
 
 ```{r compute-peaks}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 peaks <- year_and_totals %>% 
   filter(year >= 1850) %>%  #, term == '1883'|term == '1910'|term == '1950') %>% 
@@ -246,6 +286,8 @@ df1 <- year_and_totals %>% left_join(peaks, by = c("term")) #%>% view
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ## Compute half-lifes
@@ -253,6 +295,7 @@ df1 <- year_and_totals %>% left_join(peaks, by = c("term")) #%>% view
 Now, for each year term, find the minimum number of years it takes for the proportion of mentions to decline from its peak value to half its peak value. Store this in an intermediate data frame.
 
 ```{r compute-half-lifes}
+<<<<<<< HEAD
 <<<<<<< HEAD
 half_life <- df1 %>% 
   ungroup() %>%
@@ -268,20 +311,28 @@ half_life <- df1 %>%
 =======
 
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ## Plot the inset of figure 3a
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 Plot the half-life of each term over time from 1850 to 2012.
 Each point should represent one year term, and add a line to show the trend using `geom_smooth()`.
 =======
 Plot the half-life of each term over time from 1850 to 2012. Each point should represent one year term, and add a line to show the trend using `geom_smooth()`.
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+Plot the half-life of each term over time from 1850 to 2012. Each point should represent one year term, and add a line to show the trend using `geom_smooth()`.
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 
 ```{r plot-half-lifes}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 half_life %>%
   filter(year >= term) %>% 
@@ -291,15 +342,20 @@ half_life %>%
   # xlim(1850,2012)
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ## Your written answer
 
 Write up your answer to Part F here.
 <<<<<<< HEAD
+<<<<<<< HEAD
 [ Does version 2 of the NGram data produce similar results to those presented in Michel et al. (2011), which are based on version 1 data? (Hint: Don’t be surprised if it doesn’t.)]
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 # Part G
 

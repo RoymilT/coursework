@@ -55,7 +55,11 @@ This week covers:
   
   * Read Chapter 5 of [Intro to Stats with Randomization and Simulation](https://drive.google.com/file/d/0B-DHaDEbiOGkRHNndUlBaHVmaGM/edit), do exercises 5.20, 5.29
   * Read Section 3.1 of [Intro to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/), do Lab 3.6.2
+<<<<<<< HEAD
   * See if you can reproduce the table in ISRS 5.29 using [the original dataset](http://jse.amstat.org/v11n2/datasets.heinz.html)
+=======
+  * See if you can reproduce the table in ISRS 5.29 using the original dataset, in [body.dat.txt](body.dat.txt) take from [here](http://jse.amstat.org/v11n2/datasets.heinz.html)
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 
 ## References
 

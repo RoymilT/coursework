@@ -1,6 +1,7 @@
 ---
 title: "Movielens"
 <<<<<<< HEAD
+<<<<<<< HEAD
 output:
   pdf_document:
     toc: yes
@@ -11,6 +12,8 @@ output:
     toc_depth: 3
 date: "`r Sys.time()`"
 =======
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 date: '`r Sys.time()`'
 output:
   html_document:
@@ -18,7 +21,10 @@ output:
     number_sections: yes
     toc: yes
     toc_depth: 3
+<<<<<<< HEAD
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ---
 
 ```{r setup, include=FALSE}
@@ -29,11 +35,14 @@ library(knitr)
 # set plot theme
 theme_set(theme_bw())
 <<<<<<< HEAD
+<<<<<<< HEAD
 theme_update(plot.title = element_text(hjust = 0.5, face = 4))
 theme_update(text = element_text(family = "sans", face = "bold"))
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 # Load and preview data
@@ -54,6 +63,7 @@ head(ratings) %>% kable()
 ```{r dist-ratings}
 # plot the distribution of rating values (slide 21)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 dist_ratings <- ratings %>% 
   ggplot(aes( x = rating)) +
@@ -64,6 +74,8 @@ plot(dist_ratings)
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ## Per-movie stats
@@ -71,6 +83,7 @@ plot(dist_ratings)
 ```{r aggregate-by-movie}
 # aggregate ratings by movie, computing mean and number of ratings
 # hint: use the n() function for easy counting within a group
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 aggregate_by_movie <- ratings %>% 
@@ -81,11 +94,14 @@ View(aggregate_by_movie)
   
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ```{r dist-movie-popularity}
 # plot distribution of movie popularity (= number of ratings the movie received)
 # hint: try scale_x_log10() for a logarithmic x axis
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 dist_movie_pop <- ratings %>% 
@@ -100,11 +116,14 @@ dist_movie_pop <- ratings %>%
 plot(dist_movie_pop)
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ```{r dist-mean-ratings-by-movie}
 # plot distribution of mean ratings by movie (slide 23)
 # hint: try geom_histogram and geom_density
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 dist_mean_ratings_by_movie <- ratings %>% 
@@ -119,6 +138,8 @@ dist_mean_ratings_by_movie <- ratings %>%
 dist_mean_ratings_by_movie %>% plot()
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ```{r cdf-movie-pop}
@@ -127,6 +148,7 @@ dist_mean_ratings_by_movie %>% plot()
 # store the result in a new data frame so you can use it in creating figure 2 from the paper below
 
 # plot the CDF of movie popularity
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 cdf_movie_pop <- ratings %>%
@@ -147,6 +169,8 @@ cdf_movie_pop %>%
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 
@@ -154,6 +178,7 @@ cdf_movie_pop %>%
 
 ```{r aggregate-by-user}
 # aggregate ratings by user, computing mean and number of ratings
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 aggregate_by_user <- ratings %>%
@@ -165,11 +190,14 @@ aggregate_by_user <- ratings %>%
   View(aggregate_by_user)
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 ```{r dist-user-activity}
 # plot distribution of user activity (= number of ratings the user made)
 # hint: try a log scale here
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 dist_user_activity <- aggregate_by_user %>% 
@@ -183,6 +211,8 @@ dist_user_activity <- aggregate_by_user %>%
 dist_user_activity %>% plot()
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
 
 # Anatomy of the long tail
@@ -200,6 +230,7 @@ dist_user_activity %>% plot()
 # paper, produce one curve for the 100% user satisfaction level and
 # another for 90%---do not, however, bother implementing the null
 # model (shown in the dashed lines).
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 user_rate_10_plus <- ratings %>% 
@@ -259,4 +290,6 @@ ggplot() +
 
 =======
 >>>>>>> 697255389ca974c72b02f2080bea0a841f6e7244
+=======
+>>>>>>> 49b7daee778029c90086abe578767f42a36e72f5
 ```
